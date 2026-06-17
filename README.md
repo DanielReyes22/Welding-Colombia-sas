@@ -1,4 +1,4 @@
-# Welding Colombia 🟠
+# Welding Colombia sas 🟠
 
 **Landing Page B2B** — Suministro especializado de cobre de alta pureza y aleaciones para electrodos de electroerosión (EDM) en Colombia.
 
