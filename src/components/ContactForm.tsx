@@ -1,10 +1,14 @@
 "use client";
 import { useState, useRef, useEffect, type FormEvent } from "react";
+import { whatsappLink } from "@/lib/site";
 
 export default function ContactForm() {
   const formRef = useRef<HTMLElement>(null);
   const [visible, setVisible] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+  const [waText, setWaText] = useState("");
 
   useEffect(() => {
     const el = formRef.current;
@@ -17,9 +21,27 @@ export default function ContactForm() {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setError("");
+    setSending(true);
+    const data = Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>;
+    try {
+      const res = await fetch("/api/contacto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error();
+      setWaText(
+        `Hola, soy ${data.nombre} de ${data.empresa}${data.ciudad ? ` (${data.ciudad})` : ""}. Acabo de enviar una solicitud de cotización: ${data.detalles}`
+      );
+      setSubmitted(true);
+    } catch {
+      setError("No pudimos enviar su solicitud. Intente de nuevo o escríbanos por WhatsApp.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -42,7 +64,11 @@ export default function ContactForm() {
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M12 20l6 6 10-12" stroke="#B87333" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </div>
             <h3 className="text-2xl font-bold text-text-dark mb-3">¡Requerimiento Recibido!</h3>
-            <p className="text-gray-500">Nuestro equipo se pondrá en contacto con usted en las próximas 24 horas hábiles.</p>
+            <p className="text-gray-500 mb-6">Nuestro equipo se pondrá en contacto con usted en las próximas 24 horas hábiles.</p>
+            <a href={whatsappLink(waText)} target="_blank" rel="noopener noreferrer"
+              className="inline-block bg-[#25D366] hover:brightness-95 text-white px-6 py-3 rounded-xl font-bold transition-all">
+              Agilizar por WhatsApp
+            </a>
           </div>
         ) : (
           <form
@@ -51,6 +77,7 @@ export default function ContactForm() {
               visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
+            <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
             <div className="grid sm:grid-cols-2 gap-6 mb-6">
               <div>
                 <label htmlFor="nombre" className="block text-sm font-semibold text-text-dark mb-2">Nombre Completo</label>
@@ -71,7 +98,7 @@ export default function ContactForm() {
               </div>
               <div>
                 <label htmlFor="telefono" className="block text-sm font-semibold text-text-dark mb-2">Teléfono Móvil</label>
-                <input type="tel" id="telefono" name="telefono" placeholder="Ej: +57 300 123 4567"
+                <input type="tel" id="telefono" name="telefono" required placeholder="Ej: +57 300 123 4567"
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50/50 text-text-dark placeholder:text-gray-300 focus:outline-none focus:border-copper focus:ring-2 focus:ring-copper/10 transition-all duration-300" />
               </div>
             </div>
@@ -88,10 +115,12 @@ export default function ContactForm() {
             <button
               type="submit"
               id="cta-submit"
+              disabled={sending}
               className="w-full bg-copper hover:bg-copper-light text-white py-4 rounded-xl text-lg font-bold tracking-wide transition-all duration-300 hover:shadow-xl hover:shadow-copper/25 hover:-translate-y-0.5 active:translate-y-0"
             >
-              Enviar Requerimiento
+              {sending ? "Enviando..." : "Enviar Requerimiento"}
             </button>
+            {error && <p role="alert" className="text-center text-red-600 text-sm mt-4">{error}</p>}
             <p className="text-center text-gray-400 text-xs mt-4">
               Sus datos están protegidos. Solo los usaremos para responder su solicitud.
             </p>

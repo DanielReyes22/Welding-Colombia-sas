@@ -64,10 +64,10 @@ export default function Navbar() {
             />
           </svg>
           <span className="text-xl font-bold tracking-tight">
-            <span className="text-copper">Prime</span>
-            <span className="text-text-light">Copper</span>
+            <span className="text-copper">Welding</span>
+            <span className="text-text-light"> Colombia</span>
             <span className="text-text-muted text-sm font-normal ml-1">
-              Colombia
+              SAS
             </span>
           </span>
         </a>

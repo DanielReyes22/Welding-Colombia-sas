@@ -1,3 +1,5 @@
+import { SITE } from "@/lib/site";
+
 export default function Footer() {
   return (
     <footer id="footer" className="bg-carbon-dark py-12 relative">
@@ -11,8 +13,8 @@ export default function Footer() {
               <rect x="6" y="10" width="20" height="12" rx="1" fill="#D4955A" opacity="0.5" />
             </svg>
             <span className="text-text-light font-semibold">
-              <span className="text-copper">Prime</span>Copper
-              <span className="text-text-muted text-sm font-normal ml-1">Colombia</span>
+              <span className="text-copper">Welding</span> Colombia
+              <span className="text-text-muted text-sm font-normal ml-1">SAS</span>
             </span>
           </div>
 
@@ -20,6 +22,14 @@ export default function Footer() {
           <p className="text-text-muted text-sm text-center">
             © {new Date().getFullYear()} Welding Colombia SAS. Abastecimiento Industrial de Cobre de EE.UU.
           </p>
+
+          {/* Contacto */}
+          <div className="text-text-muted text-sm text-center md:text-left">
+            {SITE.phones.map((p) => (
+              <a key={p.e164} href={`tel:+${p.e164}`} className="block hover:text-copper transition-colors duration-300">+57 {p.display}</a>
+            ))}
+            <a href={`mailto:${SITE.email}`} className="block hover:text-copper transition-colors duration-300">{SITE.email}</a>
+          </div>
 
           {/* Links */}
           <div className="flex items-center gap-6 text-text-muted text-sm">
