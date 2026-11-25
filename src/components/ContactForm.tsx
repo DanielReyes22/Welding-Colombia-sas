@@ -122,7 +122,7 @@ export default function ContactForm() {
             </button>
             {error && <p role="alert" className="text-center text-red-600 text-sm mt-4">{error}</p>}
             <p className="text-center text-gray-400 text-xs mt-4">
-              Sus datos están protegidos. Solo los usaremos para responder su solicitud.
+              Al enviar acepta nuestra <a href="/privacidad" className="underline hover:text-copper">política de tratamiento de datos</a>. Solo usaremos sus datos para responder su solicitud.
             </p>
           </form>
         )}

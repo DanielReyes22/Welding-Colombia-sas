@@ -36,6 +36,7 @@ export default function Footer() {
             <a href="#materiales" className="hover:text-copper transition-colors duration-300">Materiales</a>
             <a href="#ventaja" className="hover:text-copper transition-colors duration-300">Ventajas</a>
             <a href="#contacto" className="hover:text-copper transition-colors duration-300">Contacto</a>
+            <a href="/privacidad" className="hover:text-copper transition-colors duration-300">Privacidad</a>
           </div>
         </div>
       </div>
