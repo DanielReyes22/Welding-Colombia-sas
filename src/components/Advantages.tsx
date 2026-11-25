@@ -44,7 +44,7 @@ export default function Advantages() {
         <div className="text-center mb-16">
           <span className="inline-block text-copper text-sm font-semibold tracking-widest uppercase mb-4">Ventaja Competitiva</span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-dark mb-6">
-            ¿Por qué <span className="text-copper">PrimeCopper Colombia</span> es su Aliado Estratégico?
+            ¿Por qué <span className="text-copper">Welding Colombia SAS</span> es su Aliado Estratégico?
           </h2>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">
             No solo vendemos cobre — ofrecemos una cadena de suministro diseñada para la velocidad y confiabilidad que su operación exige.

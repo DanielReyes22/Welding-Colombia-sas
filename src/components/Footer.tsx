@@ -18,7 +18,7 @@ export default function Footer() {
 
           {/* Copyright */}
           <p className="text-text-muted text-sm text-center">
-            © {new Date().getFullYear()} PrimeCopper Colombia. Abastecimiento Industrial de Cobre de EE.UU.
+            © {new Date().getFullYear()} Welding Colombia SAS. Abastecimiento Industrial de Cobre de EE.UU.
           </p>
 
           {/* Links */}

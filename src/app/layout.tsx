@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "PrimeCopper Colombia | Cobre de Alta Pureza para EDM desde EE.UU.",
+  title: "Welding Colombia SAS | Cobre de Alta Pureza para EDM desde EE.UU.",
   description:
     "Abastecimiento directo de cobre de alta pureza y aleaciones para electrodos de electroerosión (EDM) desde distribuidores en Estados Unidos. Los tiempos de entrega más cortos en Colombia para talleres de mecanizado, matriceros y fabricantes de moldes.",
   keywords: [
@@ -18,10 +18,10 @@ export const metadata: Metadata = {
     "cobre alta pureza",
     "CuW aleaciones",
     "mecanizado Colombia",
-    "PrimeCopper",
+    "Welding Colombia",
   ],
   openGraph: {
-    title: "PrimeCopper Colombia | Cobre de Alta Pureza para EDM",
+    title: "Welding Colombia SAS | Cobre de Alta Pureza para EDM",
     description:
       "Abastecimiento directo de cobre de alta pureza desde EE.UU. con logística ultra-rápida para la industria metalmecánica colombiana.",
     type: "website",

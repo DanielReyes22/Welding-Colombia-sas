@@ -68,4 +68,4 @@ npm start
 
 ## 📄 Licencia
 
-© 2025 PrimeCopper Colombia. Todos los derechos reservados.
+© 2025 Welding Colombia SAS. Todos los derechos reservados.
